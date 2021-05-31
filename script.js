@@ -1,6 +1,15 @@
+/* **************************************** */
 // JS Interview Checklist - Part 2 (Advanced)
+/* **************************************** */
+/* 
+They may forget what you said - but they will never forget how you made them feel 
+- Carl W. Buehner 
+*/
 
+/* **************************************** */
 // 1. Polyfills
+/* **************************************** */
+
 // A polyfill is a piece of code (usually JavaScript on the Web) used to provide modern functionality on older browsers that do not natively support it.
 
 // A. Let's implement it for map
@@ -64,6 +73,36 @@ Function.prototype.yourBind = function(...args) {
 };
 
 let displayYou = displayMore.yourBind(name, 'KTM');
-displayYou('Nepal'); //Expected: Princess Gurung from KTM, Nepal
+// displayYou('Nepal'); //Expected: Princess Gurung from KTM, Nepal
 
+/* **************************************** */
+//2. CLOSURES 
+/* **************************************** */
+
+// Function bundled together with its lexical environment forms a closure
+
+// what is lexical environment❓
+
+// It is essentially the surrounding state - the local memory along with the lexical environment of its parent.
+
+function x() {
+  var a = 7
+  function y() {
+    console.log(a)
+  }
+
+  return y;
+}
+
+var z = x();
+console.log(z); //Expected: [ Function: y]
+z(); // Expected: 7;
+
+// When x is invoked, y is returned. Now, y is waiting to be executed. Kind of like a loaded gun waiting to be shot! 🔫
+
+// So, when we finally invoke z - y is invoked. Now, y has to log a so it first tries to find 🔍 it in the local memory but it's not there. It goes to its parent function. It finds a there.
+
+// Voila❗There you have it - this is closure.
+
+// Even when functions are returned (in the above case y) they still remember their lexical scope (where it came from)
 
