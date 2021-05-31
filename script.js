@@ -76,7 +76,7 @@ let displayYou = displayMore.yourBind(name, 'KTM');
 // displayYou('Nepal'); //Expected: Princess Gurung from KTM, Nepal
 
 /* **************************************** */
-//2. CLOSURES 
+//2. CLOSURES
 /* **************************************** */
 
 // Function bundled together with its lexical environment forms a closure
@@ -86,9 +86,9 @@ let displayYou = displayMore.yourBind(name, 'KTM');
 // It is essentially the surrounding state - the local memory along with the lexical environment of its parent.
 
 function x() {
-  var a = 7
+  var a = 7;
   function y() {
-    console.log(a)
+    console.log(a);
   }
 
   return y;
@@ -106,18 +106,37 @@ var z = x();
 
 // Even when functions are returned (in the above case y) they still remember their lexical scope (where it came from)
 
-
 /* **************************************** */
 // 3. Currying
 /* **************************************** */
 
-let add = function (x) {
-  return function (y) {
+let add = function(x) {
+  return function(y) {
     console.log(x + y);
-  }
-}
+  };
+};
 
 let addByTwo = add(2);
 // console.log(addByTwo);  //Expected: [Function: y]
 // addByTwo(3);  //Expected: 5;
 
+/* **************************************** */
+// 4. Data Hiding / Encapsulation
+/* **************************************** */
+
+//  Suppose, you want to create a counter application. Every time, you call it - the count increases by 1. But you don't want to expose the variable outside the function. How to do it?
+
+// You guessed it - closure❗
+
+function Counter() {
+  var count = 0;
+  this.incrementCount = function() {
+    count++;
+    console.log(count);
+  };
+}
+
+// console.log(count); //Error:count is not defined;
+
+var adder = new Counter();
+// adder.incrementCount();  //1;
