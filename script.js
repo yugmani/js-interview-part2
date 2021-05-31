@@ -47,3 +47,23 @@ Function.prototype.myBind = function(...args) {
 let displayMe = display.myBind(name);
 
 // displayMe(); //Expected: She is Princess Gurung.
+
+// C. With some parameters
+
+let displayMore = function(city, country) {
+  console.log(`${this.first} ${this.last} from ${city}, ${country}`);
+};
+
+Function.prototype.yourBind = function(...args) {
+  let obj = this;
+  //get the args except the first one
+  params = args.slice(1);
+  return function(...args2) {
+    obj.apply(args[0], [...params, ...args2]);
+  };
+};
+
+let displayYou = displayMore.yourBind(name, 'KTM');
+displayYou('Nepal'); //Expected: Princess Gurung from KTM, Nepal
+
+
