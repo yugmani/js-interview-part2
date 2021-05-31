@@ -25,13 +25,13 @@ const newCB = a => a * 2;
 
 // B. bind
 
-let location = {
-  city: 'Los Angeles',
-  zip: '900196'
+let name = {
+  first: 'Princess',
+  last: 'Gurung'
 };
 
 let display = function() {
-  console.log(`${this.city}${this.zip}`);
+  console.log(`She is ${this.first} ${this.last}.`);
 };
 
 Function.prototype.myBind = function(...args) {
@@ -44,6 +44,6 @@ Function.prototype.myBind = function(...args) {
 
 // let displayMe = display.bind(obj)
 
-let displayMe = display.myBind(location);
+let displayMe = display.myBind(name);
 
-displayMe();
+// displayMe(); //Expected: She is Princess Gurung.
