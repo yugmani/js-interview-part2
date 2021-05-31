@@ -1,3 +1,20 @@
 body {
-  background: orange;
+  box-sizing: border-box;
+}
+
+#text {
+  background-color: lightgray;
+  color: red;
+  padding: 5px;
+}
+
+#output {
+  visibility:hidden;
+}
+
+#result {
+  background-color: pink;
+  color: blue;
+  padding: 5px;
+  border: 2px solid gray;
 }

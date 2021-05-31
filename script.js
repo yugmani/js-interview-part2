@@ -245,16 +245,40 @@ console.log(object2.city); // Expected: PKR
 
 // This is prototypal inheritance.
 
-
 // C. Coming back to the polyfill of bind from previous myBind (line 46):
 
-Function.prototype.myBind = function () {
+Function.prototype.myBind = function() {
   // code...
-}
+};
 
 // now we can access this method whenever we create a new function
 function a() {
   // code
 }
 
-console.log(a.__proto__) // will have myBind method
+// console.log(a.__proto__) // will have myBind method
+
+// 7. ⚡Performance Optimization
+
+const inputField = document.getElementById('text');
+const resultField = document.getElementById('result');
+const outputField = document.getElementById('output');
+
+const getData = e => {
+  resultField.innerText = e.target.value;
+  outputField.style.visibility = 'visible';
+  console.log(e.target.value);
+};
+
+const debounce = function(fn, delay) {
+  let timer;
+  return function() {
+    let context = this;
+    clearTimeout(timer);
+    timer = setTimeout(() => {
+      fn.apply(context, arguments);
+    }, delay);
+  };
+};
+
+inputField.addEventListener('keyup', debounce(getData, 300));
