@@ -147,3 +147,30 @@ var adder = new Counter();
 
 // Note: Garbage collector basically removes unused variables from the memory automatically.
 
+/* **************************************** */
+// 5. 🤝Promises
+/* **************************************** */
+
+// The Promise object represents the eventual completion (or failure) of an asynchronous operation and its resulting value.
+
+// It is in one of these three states:
+
+// pending: initial state, neither fulfilled nor rejected
+// fulfilled: operation was completed successfully
+// rejected: operation failed
+
+const promise = new Promise((resolve, reject) => {
+  let value = true;
+
+  if (value) {
+    resolve('hey value is true');
+  } else {
+    reject('There was an error, value is false');
+  }
+});
+
+promise
+  .then(x => {
+    console.log(x);
+  })
+  .catch(error => console.log(error));
