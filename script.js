@@ -197,6 +197,7 @@ async function asyncCall() {
 // 6. 👪 Prototypes, Prototypal Inheritance
 /* **************************************** */
 
+// A.
 // Whenever we create anything (object, function) in JS - JS Engine automatically attaches that anything with some properties and methods
 
 // All this comes via prototypes
@@ -213,4 +214,47 @@ let array = ['yug', 'yoog'];
 
 // console.log(array.__proto__.__proto__.__proto__); //null
 
+// All this is called a prototype chain
 
+// We can do the same with objects and functions as well.
+
+// We will always find Object.prototype behind the scenes. That's why you may have heard - everything in JS is nothing but an object 🤯
+
+// B.
+let object = {
+  name: 'Princess',
+  city: 'PKR',
+  getIntro: function() {
+    console.log(`${this.name}, ${this.city}`);
+  }
+};
+
+// Note: Don't modify prototypes this way. It's just for understanding.
+
+let object2 = {
+  name: 'Prince'
+};
+
+// The right way to do it: https://javascript.plainenglish.io/how-prototypal-inheritance-works-in-javascript-and-how-to-convert-it-to-class-based-inheritance-632e31e6350d
+
+object2.__proto__ = object;
+
+// By doing this, object2 gets access to the object's properties. So, now we can do:
+
+console.log(object2.city); // Expected: PKR
+
+// This is prototypal inheritance.
+
+
+// C. Coming back to the polyfill of bind from previous myBind (line 46):
+
+Function.prototype.myBind = function () {
+  // code...
+}
+
+// now we can access this method whenever we create a new function
+function a() {
+  // code
+}
+
+console.log(a.__proto__) // will have myBind method
