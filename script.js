@@ -203,8 +203,14 @@ async function asyncCall() {
 
 // __proto__ is the object where JS is putting it all
 
-let arr = ['yug', 'yoog'];
-// console.log(arr.__proto__.forEach);
-// console.log(arr.__proto__); //same as Array.prototype
-// console.log(arr.__proto__.__proto__); // same as Object.prototype
-// console.log(arr.__proto__.__proto__.__proto__); //null
+let array = ['yug', 'yoog'];
+
+// console.log(array.__proto__.forEach); // Expected: ƒ forEach() { [native code] }
+
+// console.log(array.__proto__); //same as Array.prototype:  concat, constructor, every, fill, filter, find, forEach, join, map, keys, pop, push .....
+
+// console.log(array.__proto__.__proto__); // same as Object.prototype:constructor: hasOwnProperty, isPrototypeOf, toLocaleString, toString, valueOf, get __proto__, set __proto__ ......
+
+// console.log(array.__proto__.__proto__.__proto__); //null
+
+
