@@ -95,8 +95,8 @@ function x() {
 }
 
 var z = x();
-console.log(z); //Expected: [ Function: y]
-z(); // Expected: 7;
+// console.log(z); //Expected: [ Function: y]
+// z();   // Expected: 7;
 
 // When x is invoked, y is returned. Now, y is waiting to be executed. Kind of like a loaded gun waiting to be shot! 🔫
 
@@ -105,4 +105,19 @@ z(); // Expected: 7;
 // Voila❗There you have it - this is closure.
 
 // Even when functions are returned (in the above case y) they still remember their lexical scope (where it came from)
+
+
+/* **************************************** */
+// 3. Currying
+/* **************************************** */
+
+let add = function (x) {
+  return function (y) {
+    console.log(x + y);
+  }
+}
+
+let addByTwo = add(2);
+// console.log(addByTwo);  //Expected: [Function: y]
+// addByTwo(3);  //Expected: 5;
 
