@@ -169,8 +169,42 @@ const promise = new Promise((resolve, reject) => {
   }
 });
 
+// A. Then / Catch
 promise
   .then(x => {
     console.log(x);
   })
   .catch(error => console.log(error));
+
+// Expected: hey value is true
+
+// Note: resolve and reject are just conventional names. Call it pizza🍕 if you like
+
+// B. Async / Await
+
+// Instead of then/catch - we can also use async/await
+
+async function asyncCall() {
+  const result = await promise;
+  console.log(result);
+}
+
+// asyncCall(); // Expected: hey value is true
+
+// One of the advantages of promises is that it is a much cleaner syntax. Earlier, it used to be a callback hell 🌋
+
+/* **************************************** */
+// 6. 👪 Prototypes, Prototypal Inheritance
+/* **************************************** */
+
+// Whenever we create anything (object, function) in JS - JS Engine automatically attaches that anything with some properties and methods
+
+// All this comes via prototypes
+
+// __proto__ is the object where JS is putting it all
+
+let arr = ['yug', 'yoog'];
+// console.log(arr.__proto__.forEach);
+// console.log(arr.__proto__); //same as Array.prototype
+// console.log(arr.__proto__.__proto__); // same as Object.prototype
+// console.log(arr.__proto__.__proto__.__proto__); //null
