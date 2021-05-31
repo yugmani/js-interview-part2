@@ -140,3 +140,10 @@ function Counter() {
 
 var adder = new Counter();
 // adder.incrementCount();  //1;
+
+// Disadvantages 😅
+// Overconsumption of memory or memory leaks can happen.
+// For example, the closed-over-variable will not be garbage collected. As even if the outer function has run, the returned inner function still has a reference to the closed-over-variable.
+
+// Note: Garbage collector basically removes unused variables from the memory automatically.
+
