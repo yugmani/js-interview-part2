@@ -20,5 +20,30 @@ Array.prototype.myMap = function(cb) {
 const arr = [1, 2, 3];
 const newCB = a => a * 2;
 
-console.log(arr.myMap(newCB));
+// console.log(arr.myMap(newCB));
 //Expected [2, 4, 6];
+
+// B. bind
+
+let location = {
+  city: 'Los Angeles',
+  zip: '900196'
+};
+
+let display = function() {
+  console.log(`${this.city}${this.zip}`);
+};
+
+Function.prototype.myBind = function(...args) {
+  //this -> display
+  let obj = this;
+  return function() {
+    obj.call(args[0]);
+  };
+};
+
+// let displayMe = display.bind(obj)
+
+let displayMe = display.myBind(location);
+
+displayMe();
