@@ -241,7 +241,7 @@ object2.__proto__ = object;
 
 // By doing this, object2 gets access to the object's properties. So, now we can do:
 
-console.log(object2.city); // Expected: PKR
+// console.log(object2.city); // Expected: PKR
 
 // This is prototypal inheritance.
 
@@ -304,3 +304,41 @@ function countDown(count) {
 // countDown(10);
 
 // this function prints 10, 9, 8, ... with some delay in between that is debouncing.
+
+// 8. Throttling
+
+// For example, on every window resize event, we call an expensive function. Now, we want it such that the expensive function will only be executed once in the given time interval.
+// This is what throggling is.
+
+const expensive = () => {
+  console.log('expensive');
+};
+
+const throttle = (fn, limit) => {
+  let context = this;
+  let flag = true;
+  return function() {
+    if (flag) {
+      fn.apply(context, arguments);
+      flag = false;
+    }
+
+    setTimeout(() => {
+      flag = true;
+    }, limit);
+  };
+};
+
+const func = throttle(expensive, 2000);
+// window.addEventListener('resize', func);
+
+// Only when flag variable is true, we are invoking the callback function. And it is set to true inside the setTimeout. So, it is true only after desired time limit.
+
+// So, what's the difference between debounce and throttling❓
+
+// Let's take the search bar 🔍 example from above. When we are debouncing the input field - we are saying that only fetch the data when the difference between two keyup events is at least 300 ms.
+
+// In the case of throttling, we make a function call only after a certain period of time. Suppose, you are searching for an encyclopedia in the search bar. Say, the first call is made on e and it took us 300 ms to reach p. The next call will be made then only. All the events in between will be ignored.
+
+// So, to summarize, debouncing - when the difference between two keyup events is 300 ms and throttling - when the difference between two function calls is 300 ms. Basically, the function is called after a certain interval of time.
+
