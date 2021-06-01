@@ -260,6 +260,9 @@ function a() {
 
 // 7. ⚡Performance Optimization
 
+// DEBOUNCING
+// A.
+
 const inputField = document.getElementById('text');
 const resultField = document.getElementById('result');
 const outputField = document.getElementById('output');
@@ -282,3 +285,22 @@ const debounce = function(fn, delay) {
 };
 
 inputField.addEventListener('keyup', debounce(getData, 300));
+// Inside the debounce function, we create a timer function using setTimeout which is responsible to call next getData() only after 300ms. This is debouncing.
+
+// B.
+function countDown(count) {
+  for (let i = 0; i < 10; i++) {
+    function timer() {
+      setTimeout(() => {
+        console.log(count);
+        count--;
+      }, i * 500);
+    }
+
+    timer(i);
+  }
+}
+
+// countDown(10);
+
+// this function prints 10, 9, 8, ... with some delay in between that is debouncing.
